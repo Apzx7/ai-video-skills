@@ -1,8 +1,8 @@
 ---
 name: ai-microfilm-prompt-pack
-version: 1.3.0
-description: Produces a complete AI microfilm prompt pack from user copy — routes by video form first: short-form clips (10-20s) use hook-driven viral logic (golden-3-second hook, emotion beat, transition pacing) with NO five-act structure, while microfilms (1min+) reshape the idea into the five-act story structure (inciting incident, progressive complications, crisis, climax, thought-provoking ending) before storyboarding; both share the same production pipeline — storyboard script, character three-view prompts (plain + prop-state versions; prop-state must be generated from the plain version), special-prop reference prompts, environment scene prompts (empty shots by default; character-in-scene shots only when needed), fully expanded per-shot prompts, and a timecoded voiceover script. Outputs are archived to a theme folder under the user's asset root with 人物/道具/场景/镜头/旁白/成片 subfolders, all watermark-free. Use when the user wants to make an AI microfilm or AI manga-drama (AI漫剧), needs storyboards, or asks for a prompt pack.
-description_zh: 按用户文案产出 AI 微电影完整提示词包——先按形态分流：十几秒短视频走爆款逻辑（黄金三秒钩子+情绪爆点+转场节奏），不套五段式；微电影（1分钟以上）才把想法改造成五段式故事结构（激励事件/进展纠葛/危机/高潮/引发思考的结尾）再分镜；两条路径共用同一套制作管线——分镜脚本、角色三视图（素体+道具状态版，道具版须以素体图生）、特殊道具设定图、场景图（默认空镜，必要时才出带角色场景）、每镜完整提示词、带时间码配音稿；素材按主题文件夹归档（人物/道具/场景/镜头/旁白/成片），全程去水印。当用户要做 AI 微电影/AI 漫剧、要分镜或提示词包时使用。
+version: 1.4.0
+description: Produces a complete AI microfilm prompt pack from user copy — routes by video form first: short-form clips (10-20s) use hook-driven viral logic (golden-3-second hook, emotion beat, transition pacing) with NO five-act structure, while microfilms (1min+) reshape the idea into the five-act story structure (inciting incident, progressive complications, crisis, climax, thought-provoking ending) before storyboarding; both share the same production pipeline — storyboard script, character three-view prompts (plain + prop-state versions; prop-state must be generated from the plain version), special-prop reference prompts, environment scene prompts (empty shots by default; character-in-scene shots only when needed), fully expanded per-shot prompts, and a timecoded voiceover script. Visual-first storytelling (show, don't tell): captions and narration only for what the image cannot express. Outputs are archived to a theme folder under the user's asset root with 人物/道具/场景/镜头/旁白/成片 subfolders, all watermark-free. Use when the user wants to make an AI microfilm or AI manga-drama (AI漫剧), needs storyboards, or asks for a prompt pack.
+description_zh: 按用户文案产出 AI 微电影完整提示词包——先按形态分流：十几秒短视频走爆款逻辑（黄金三秒钩子+情绪爆点+转场节奏），不套五段式；微电影（1分钟以上）才把想法改造成五段式故事结构（激励事件/进展纠葛/危机/高潮/引发思考的结尾）再分镜；画面优先、能演不说（字幕旁白只补画面表达不了的信息）；两条路径共用同一套制作管线——分镜脚本、角色三视图（素体+道具状态版，道具版须以素体图生）、特殊道具设定图、场景图（默认空镜，必要时才出带角色场景）、每镜完整提示词、带时间码配音稿；素材按主题文件夹归档（人物/道具/场景/镜头/旁白/成片），全程去水印。当用户要做 AI 微电影/AI 漫剧、要分镜或提示词包时使用。
 ---
 
 # AI 微电影提示词包产出流程
@@ -21,6 +21,7 @@ description_zh: 按用户文案产出 AI 微电影完整提示词包——先按
 6. 生成顺序硬性规定：素体三视图 → 道具版三视图（以素体图为参考图）→ 道具设定图 → 场景空镜图 →（必要时）带角色场景图 → 每镜关键帧 → 图生视频。道具版脱离素体版单独生成 = 同角色两张脸。
 7. 所有成图去水印：提示词带"无文字无水印"；工具强制出水印时，后期（剪映"消除笔"/裁切/PS）处理后再入库。
 8. 形态分流，不教条：先判断视频形态再选结构工具。十几秒短视频不套五段式，走爆款逻辑（黄金三秒钩子 + 情绪爆点 + 转场节奏）；微电影才做五段式改造（激励事件 → 进展纠葛 → 危机 → 高潮 → 结尾）。以用户当时的说法为准，没说清就先问。生成顺序与交付管线两条路径共用，短视频只是镜头数少。
+9. 画面优先，能演就不说（show, don't tell）：能用镜头画面表现的信息，绝不写成字幕或台词说明。旁白和字幕只补画面演不出的部分（内心独白、抽象概念、时间跳跃）；情绪、关系、冲突一律让画面演出来。每镜自问：把字幕删掉，画面还成立吗？成立就删。
 
 ## 工作流（六步管线）
 
@@ -64,7 +65,7 @@ description_zh: 按用户文案产出 AI 微电影完整提示词包——先按
 
 短片压缩规则：55 秒左右的微电影五段各 1-2 镜；压缩的是展开篇幅，不是结构节拍，五段都必须在。用户想法缺段（常见缺"激励事件"或"危机"）就补出来，并明确告知补了什么。五段式改造稿连同分镜一起交付，分镜每镜标注对应阶段。
 
-结构确认后按时间线切镜，每镜包含：镜头号·标题（时间码起止）·结构标注（短视频标钩子/爆点/转场，微电影标五段阶段）、画面描述、运镜、字幕、音效。时间码累计递增，后续配音稿与此对齐。分镜全文等用户确认再进入下一步。
+结构确认后按时间线切镜，每镜包含：镜头号·标题（时间码起止）·结构标注（短视频标钩子/爆点/转场，微电影标五段阶段）、画面描述、运镜、字幕（仅画面表达不了的信息，默认克制：每镜先演后说）、音效。时间码累计递增，后续配音稿与此对齐。分镜全文等用户确认再进入下一步。
 
 ### 第 2 步 角色三视图提示词
 
@@ -93,7 +94,7 @@ description_zh: 按用户文案产出 AI 微电影完整提示词包——先按
 
 ### 第 6 步 带时间码配音稿
 
-逐镜旁白文本 + 起止时间码，与分镜逐镜对齐。无旁白的镜头标注（静音/环境音）。语气与第 0 步确认的旁白基调一致。
+逐镜旁白文本 + 起止时间码，与分镜逐镜对齐。旁白克制，能演的不说：旁白只补画面之外的内心独白、抽象概念、时间跳跃。无旁白的镜头标注（静音/环境音）。语气与第 0 步确认的旁白基调一致。
 
 ## 一致性机制（三条叠加，缺一不稳）
 
