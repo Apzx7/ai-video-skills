@@ -1,8 +1,8 @@
 ---
 name: ai-microfilm-prompt-pack
-version: 1.4.0
-description: Produces a complete AI microfilm prompt pack from user copy — routes by video form first: short-form clips (10-20s) use hook-driven viral logic (golden-3-second hook, emotion beat, transition pacing) with NO five-act structure, while microfilms (1min+) reshape the idea into the five-act story structure (inciting incident, progressive complications, crisis, climax, thought-provoking ending) before storyboarding; both share the same production pipeline — storyboard script, character three-view prompts (plain + prop-state versions; prop-state must be generated from the plain version), special-prop reference prompts, environment scene prompts (empty shots by default; character-in-scene shots only when needed), fully expanded per-shot prompts, and a timecoded voiceover script. Visual-first storytelling (show, don't tell): captions and narration only for what the image cannot express. Outputs are archived to a theme folder under the user's asset root with 人物/道具/场景/镜头/旁白/成片 subfolders, all watermark-free. Use when the user wants to make an AI microfilm or AI manga-drama (AI漫剧), needs storyboards, or asks for a prompt pack.
-description_zh: 按用户文案产出 AI 微电影完整提示词包——先按形态分流：十几秒短视频走爆款逻辑（黄金三秒钩子+情绪爆点+转场节奏），不套五段式；微电影（1分钟以上）才把想法改造成五段式故事结构（激励事件/进展纠葛/危机/高潮/引发思考的结尾）再分镜；画面优先、能演不说（字幕旁白只补画面表达不了的信息）；两条路径共用同一套制作管线——分镜脚本、角色三视图（素体+道具状态版，道具版须以素体图生）、特殊道具设定图、场景图（默认空镜，必要时才出带角色场景）、每镜完整提示词、带时间码配音稿；素材按主题文件夹归档（人物/道具/场景/镜头/旁白/成片），全程去水印。当用户要做 AI 微电影/AI 漫剧、要分镜或提示词包时使用。
+version: 1.5.0
+description: Produces a complete AI microfilm prompt pack from user copy — routes by video form first: short-form clips (10-20s) use hook-driven viral logic (golden-3-second hook, emotion beat, transition pacing) with NO five-act structure, while microfilms (1min+) reshape the idea into the five-act story structure (inciting incident, progressive complications, crisis, climax, thought-provoking ending) before storyboarding; both share the same production pipeline — storyboard script, character three-view prompts (plain + prop-state versions; prop-state must be generated from the plain version), special-prop reference prompts, environment scene prompts (empty shots by default; character-in-scene shots only when needed), fully expanded per-shot prompts, and a timecoded voiceover script. Visual-first storytelling (show, don't tell): captions and narration only for what the image cannot express. Every shot prompt must specify spatial staging — camera angle, character orientation, depth placement (fore/mid/background), action axis and Z-axis camera motion — never the action alone. Each storyboard shot labels its reference images (which character/scene/prop images to use), music/sound mood, and transition into the next shot, with creative match-cut transition ideas (Stranger-Things-style) where they fit. Outputs are archived to a theme folder under the user's asset root with 人物/道具/场景/镜头/旁白/成片 subfolders, all watermark-free. Use when the user wants to make an AI microfilm or AI manga-drama (AI漫剧), needs storyboards, or asks for a prompt pack.
+description_zh: 按用户文案产出 AI 微电影完整提示词包——先按形态分流：十几秒短视频走爆款逻辑（黄金三秒钩子+情绪爆点+转场节奏），不套五段式；微电影（1分钟以上）才把想法改造成五段式故事结构（激励事件/进展纠葛/危机/高潮/引发思考的结尾）再分镜；画面优先、能演不说（字幕旁白只补画面表达不了的信息）；每镜提示词必须写明空间摆位（机位/人物朝向/前景中景背景纵深/动作轴线/Z轴运镜），不能只写动作；分镜每镜标注参考图（角色/场景/道具）、配乐音效、转场方式，创意衔接灵感（《怪奇物语》式）随镜标注；两条路径共用同一套制作管线——分镜脚本、角色三视图（素体+道具状态版，道具版须以素体图生）、特殊道具设定图、场景图（默认空镜，必要时才出带角色场景）、每镜完整提示词、带时间码配音稿；素材按主题文件夹归档（人物/道具/场景/镜头/旁白/成片），全程去水印。当用户要做 AI 微电影/AI 漫剧、要分镜或提示词包时使用。
 ---
 
 # AI 微电影提示词包产出流程
@@ -22,6 +22,8 @@ description_zh: 按用户文案产出 AI 微电影完整提示词包——先按
 7. 所有成图去水印：提示词带"无文字无水印"；工具强制出水印时，后期（剪映"消除笔"/裁切/PS）处理后再入库。
 8. 形态分流，不教条：先判断视频形态再选结构工具。十几秒短视频不套五段式，走爆款逻辑（黄金三秒钩子 + 情绪爆点 + 转场节奏）；微电影才做五段式改造（激励事件 → 进展纠葛 → 危机 → 高潮 → 结尾）。以用户当时的说法为准，没说清就先问。生成顺序与交付管线两条路径共用，短视频只是镜头数少。
 9. 画面优先，能演就不说（show, don't tell）：能用镜头画面表现的信息，绝不写成字幕或台词说明。旁白和字幕只补画面演不出的部分（内心独白、抽象概念、时间跳跃）；情绪、关系、冲突一律让画面演出来。每镜自问：把字幕删掉，画面还成立吗？成立就删。
+10. 写动作必须写空间摆位，不能只写动作本身：机位（正面/侧后方/俯拍/仰拍）+ 人物朝向（面对/背对/侧面朝镜头）+ 纵深位置（前景/中景/背景）+ 动作沿哪条轴线发生（指向画面深处/横向移动/走向镜头/出画）+ Z 轴运动（镜头推向画面深处/拉出）。只写"新娘指向远方"，AI 默认正面机位并刻意夸张动作，手指方向与镜头轴线打架；正确写法是"侧后方机位，新娘背对镜头占据前景，手指向画面深处，镜头沿手指方向缓缓推入纵深（Z 轴伸展）"。写镜头顺序：先定机位 → 再定人物朝向与纵深位置 → 最后定动作沿哪条轴线。
+11. 分镜每镜必须标注三件事：参考图（本镜用哪张角色图/场景图/道具设定图，写文件名）、配乐与音效（本镜配乐基调 + 音效，AI 生成自带音效，剪辑时还需整片配乐铺底）、转场（与上一镜的衔接方式）。有创意衔接灵感时写出来，参考《怪奇物语》式转场：形状匹配剪辑、动作跨镜连贯、纵深穿越、声画错位（下一镜声音先行）。
 
 ## 工作流（六步管线）
 
@@ -65,7 +67,17 @@ description_zh: 按用户文案产出 AI 微电影完整提示词包——先按
 
 短片压缩规则：55 秒左右的微电影五段各 1-2 镜；压缩的是展开篇幅，不是结构节拍，五段都必须在。用户想法缺段（常见缺"激励事件"或"危机"）就补出来，并明确告知补了什么。五段式改造稿连同分镜一起交付，分镜每镜标注对应阶段。
 
-结构确认后按时间线切镜，每镜包含：镜头号·标题（时间码起止）·结构标注（短视频标钩子/爆点/转场，微电影标五段阶段）、画面描述、运镜、字幕（仅画面表达不了的信息，默认克制：每镜先演后说）、音效。时间码累计递增，后续配音稿与此对齐。分镜全文等用户确认再进入下一步。
+结构确认后按时间线切镜，每镜包含七个字段：
+
+1. 镜头号·标题（时间码起止）·结构标注（短视频标钩子/爆点/转场，微电影标五段阶段）
+2. 画面描述：机位 + 人物朝向 + 纵深位置（前景/中景/背景）+ 动作沿哪条轴线 + 画面内容（按核心原则 #10 写，不写只给动作的裸描述）
+3. 运镜：推拉摇移跟 + Z 轴走向（推向画面深处/拉出）
+4. 参考图标注：本镜用哪张角色图（素体版/道具版文件名）、哪张场景图、哪张道具设定图
+5. 字幕：仅画面表达不了的信息，默认克制（每镜先演后说）
+6. 配乐与音效：本镜配乐基调（如"低频弦乐渐强"）+ 音效（AI 生成自带，剪辑时另补环境音）
+7. 转场：与上一镜的衔接方式（硬切/叠化/匹配剪辑/动作衔接/声画错位）；有创意衔接灵感就写出来（《怪奇物语》式：形状匹配、动作跨镜连贯、纵深穿越、下一镜声音先行）
+
+时间码累计递增，后续配音稿与此对齐。分镜全文等用户确认再进入下一步。
 
 ### 第 2 步 角色三视图提示词
 
@@ -89,12 +101,15 @@ description_zh: 按用户文案产出 AI 微电影完整提示词包——先按
 
 ### 第 5 步 每镜完整展开提示词
 
-- 结构：场景词 + 动作/构图/运镜词 + 角色锚点 + 道具锚点（涉及道具的镜头）+ 风格锚点
+- 结构：场景词 + 机位与景别 + 人物朝向与纵深位置（前景/中景/背景）+ 动作沿轴线描述（含 Z 轴运镜）+ 角色锚点 + 道具锚点（涉及道具的镜头）+ 风格锚点
+- 动作必须带方向与空间关系（核心原则 #10），严禁只写"某人做某事"不带摆位
 - 全部词块原样嵌入成品句，用户复制即用；严禁出现"+"、"[场景]"等占位符。
 
 ### 第 6 步 带时间码配音稿
 
 逐镜旁白文本 + 起止时间码，与分镜逐镜对齐。旁白克制，能演的不说：旁白只补画面之外的内心独白、抽象概念、时间跳跃。无旁白的镜头标注（静音/环境音）。语气与第 0 步确认的旁白基调一致。
+
+配音稿末尾附「整片配乐基调」：主题动机 + 各段情绪对应的配乐变化（平静/起伏/最低/爆发/余味，与五段式或钩子爆点结构对齐），供剪辑时统一铺底；AI 生成自带音效不等于有配乐，剪辑必须另铺一条配乐轨。
 
 ## 一致性机制（三条叠加，缺一不稳）
 
@@ -135,12 +150,12 @@ description_zh: 按用户文案产出 AI 微电影完整提示词包——先按
 
 ## 交付物清单
 
-- 分镜脚本.md（第 1 步：微电影含五段式改造稿，每镜标阶段；短视频标钩子/爆点/转场）
+- 分镜脚本.md（第 1 步：微电影含五段式改造稿，每镜标阶段；短视频标钩子/爆点/转场；每镜七字段含参考图标注/配乐音效/转场）
 - 角色三视图提示词.md（第 2 步，素体版+道具状态版，注明生成顺序）
 - 道具设定图提示词.md（第 3 步，道具展开型故事必备）
 - 场景提示词.md（第 4 步，纯环境空镜为主，附带角色场景规则）
-- 完整提示词.md（第 5 步，每镜复制即用）
-- 配音稿.md（第 6 步，带时间码）
+- 完整提示词.md（第 5 步，每镜复制即用，含机位/朝向/纵深/轴线）
+- 配音稿.md（第 6 步，带时间码，末尾附整片配乐基调）
 
 用户已有部分文件时增量写入对应文件，不要重复整套。
 
@@ -155,6 +170,9 @@ description_zh: 按用户文案产出 AI 微电影完整提示词包——先按
 - 短视频硬套五段式 → 前奏铺垫拖死节奏，观众三秒划走；短视频走钩子+爆点+转场
 - 微电影故事平铺无结构/只写高潮 → 先五段式改造，缺段补段（常见缺激励事件或危机）
 - 不判断形态一刀切 → 按用户说法分流，没说清就问；两条路径共用生成管线，只有结构改造这一步不同
+- 只写动作不写摆位 → AI 默认正面机位夸张动作；先定机位/朝向/纵深/轴线再写动作（原则 #10）
+- 分镜不标参考图 → 生成时乱用图；每镜标注角色/场景/道具图文件名
+- 分镜无配乐与转场 → 剪辑时没基调、镜头干接；每镜带配乐音效转场字段，配音稿附整片配乐基调
 - 素材散落 → 按 人物/道具/场景/镜头/旁白/成片 归仓
 - 平台水印 → 提示词"无文字无水印" + 后期去水印双保险
 - 负面词库遗漏 → 每条统一携带（见 reference.md）
